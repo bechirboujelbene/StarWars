@@ -6,6 +6,12 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		433A2D0F2DC36F8B003B8400 /* Apollo in Frameworks */ = {isa = PBXBuildFile; productRef = 433A2D0E2DC36F8B003B8400 /* Apollo */; };
+		433A2D112DC36F8B003B8400 /* ApolloSQLite in Frameworks */ = {isa = PBXBuildFile; productRef = 433A2D102DC36F8B003B8400 /* ApolloSQLite */; };
+		438DF12B2DC396B200017A00 /* StarWarsAPI in Frameworks */ = {isa = PBXBuildFile; productRef = 438DF12A2DC396B200017A00 /* StarWarsAPI */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		437C2DBE2DBE3F50002008D6 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -52,6 +58,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				433A2D0F2DC36F8B003B8400 /* Apollo in Frameworks */,
+				433A2D112DC36F8B003B8400 /* ApolloSQLite in Frameworks */,
+				438DF12B2DC396B200017A00 /* StarWarsAPI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -99,6 +108,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 437C2DD12DBE3F50002008D6 /* Build configuration list for PBXNativeTarget "StarWars" */;
 			buildPhases = (
+				433A2D1C2DC37799003B8400 /* Apollo Generate Code */,
 				437C2DA82DBE3F4F002008D6 /* Sources */,
 				437C2DA92DBE3F4F002008D6 /* Frameworks */,
 				437C2DAA2DBE3F4F002008D6 /* Resources */,
@@ -112,6 +122,9 @@
 			);
 			name = StarWars;
 			packageProductDependencies = (
+				433A2D0E2DC36F8B003B8400 /* Apollo */,
+				433A2D102DC36F8B003B8400 /* ApolloSQLite */,
+				438DF12A2DC396B200017A00 /* StarWarsAPI */,
 			);
 			productName = StarWars;
 			productReference = 437C2DAC2DBE3F4F002008D6 /* StarWars.app */;
@@ -195,6 +208,10 @@
 			);
 			mainGroup = 437C2DA32DBE3F4F002008D6;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				433A2D0D2DC36F8B003B8400 /* XCRemoteSwiftPackageReference "apollo-ios" */,
+				438DF1292DC396B200017A00 /* XCLocalSwiftPackageReference "StarWarsAPI" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 437C2DAD2DBE3F4F002008D6 /* Products */;
 			projectDirPath = "";
@@ -230,6 +247,27 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		433A2D1C2DC37799003B8400 /* Apollo Generate Code */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 12;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Apollo Generate Code";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Define the path to the CLI executable in the project root\nAPOLLO_CLI=\"${SRCROOT}/apollo-ios-cli\" \n\n# Check if the CLI file exists\nif [ ! -e \"$APOLLO_CLI\" ]; then\n    echo \"warning: Apollo CLI not found at $APOLLO_CLI. Right-click the project in Xcode and run the 'Install CLI' plugin first.\"\n    exit 1\nfi\n\necho \"Found CLI: $APOLLO_CLI\"\n\n# Navigate to the project root directory where apollo-codegen-config.json is located\ncd \"${SRCROOT}\"\necho \"Changed directory to: $(pwd)\"\n\n# Run code generation using the config file approach\necho \"Executing 'generate' command...\"\n\"$APOLLO_CLI\" generate || echo \"ERROR: 'generate' command failed with exit code $?\"\n\necho \"Checking for generated file...\"\nif [ ! -f \"${SRCROOT}/StarWars/GraphQL/API.swift\" ]; then\n    echo \"ERROR: API.swift was NOT generated\"\nelse\n    echo \"SUCCESS: API.swift was generated successfully\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		437C2DA82DBE3F4F002008D6 /* Sources */ = {
@@ -394,6 +432,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"StarWars/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "StarWars needs access to Face ID/Touch ID to secure your app data";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -431,6 +470,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"StarWars/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "StarWars needs access to Face ID/Touch ID to secure your app data";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -583,6 +623,41 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		438DF1292DC396B200017A00 /* XCLocalSwiftPackageReference "StarWarsAPI" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = StarWarsAPI;
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		433A2D0D2DC36F8B003B8400 /* XCRemoteSwiftPackageReference "apollo-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apollographql/apollo-ios.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.21.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		433A2D0E2DC36F8B003B8400 /* Apollo */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 433A2D0D2DC36F8B003B8400 /* XCRemoteSwiftPackageReference "apollo-ios" */;
+			productName = Apollo;
+		};
+		433A2D102DC36F8B003B8400 /* ApolloSQLite */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 433A2D0D2DC36F8B003B8400 /* XCRemoteSwiftPackageReference "apollo-ios" */;
+			productName = ApolloSQLite;
+		};
+		438DF12A2DC396B200017A00 /* StarWarsAPI */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = StarWarsAPI;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 437C2DA42DBE3F4F002008D6 /* Project object */;
 }

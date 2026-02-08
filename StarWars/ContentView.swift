@@ -8,17 +8,33 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @StateObject private var authService = AuthenticationService()
+
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        
+        Group {
+            if authService.isAuthenticated {
+                // If authenticated, show the main app content
+                MainTabView()
+                    .environmentObject(authService)
+            } else if authService.requiresPINEntry {
+                
+                PINEntryView()
+                    .environmentObject(authService)
+            } else {
+                
+                BiometricAuthView() 
+                    .environmentObject(authService)
+            }
         }
-        .padding()
+        
+        .transition(.opacity.animation(.easeInOut))
     }
 }
 
-#Preview {
-    ContentView()
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
+    }
 }

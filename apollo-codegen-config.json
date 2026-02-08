@@ -1,0 +1,21 @@
+{
+  "schemaNamespace": "StarWarsAPI",
+  "input": {
+    "operationSearchPaths": ["./StarWars/GraphQL/CharacterQueries.graphql", "./StarWars/GraphQL/PlanetQueries.graphql", "./StarWars/GraphQL/StarshipQueries.graphql"],
+    "schemaSearchPaths": ["./StarWars/GraphQL/schema.graphqls"]
+  },
+  "output": {
+    "testMocks": {
+      "none": {}
+    },
+    "schemaTypes": {
+      "path": "./StarWarsAPI",
+      "moduleType": {
+        "swiftPackageManager": {}
+      }
+    },
+    "operations": {
+      "inSchemaModule": {}
+    }
+  }
+}

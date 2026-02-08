@@ -1,0 +1,32 @@
+query AllPeople($after: String) {
+  allPeople(first: 10, after: $after) {
+    totalCount
+    pageInfo {
+      endCursor
+      hasNextPage
+    }
+    edges {
+      cursor
+      node {
+        id # Request the GraphQL Node ID
+        name
+        height
+        mass
+        birthYear
+        hairColor
+        eyeColor
+        skinColor
+        gender
+        homeworld {
+          name
+        }
+        species {
+          name
+        }
+        filmConnection { totalCount }
+        created
+        edited
+      }
+    }
+  }
+}

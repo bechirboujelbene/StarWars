@@ -1,0 +1,29 @@
+query AllPlanets($after: String) {
+  allPlanets(first: 10, after: $after) {
+    totalCount
+    pageInfo {
+      endCursor
+      hasNextPage
+    }
+    edges {
+      cursor
+      node {
+        id
+        name
+        diameter
+        rotationPeriod
+        orbitalPeriod
+        gravity
+        population
+        climates
+        terrains
+        surfaceWater
+        filmConnection {
+          totalCount
+        }
+        created
+        edited
+      }
+    }
+  }
+}
