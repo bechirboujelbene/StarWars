@@ -1,6 +1,6 @@
-# Star Wars App
+# Star Wars Explorer
 
-
+A native iOS app for browsing characters, planets and starships from the Star Wars universe, built with SwiftUI and MVVM. Data comes from a GraphQL API through Apollo iOS with generated Swift types, is cached in SQLite for offline use, and the app is protected with Face ID and a PIN fallback.
 
 ## Features
 
