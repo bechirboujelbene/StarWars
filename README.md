@@ -2,6 +2,13 @@
 
 A native iOS app for browsing characters, planets and starships from the Star Wars universe, built with SwiftUI and MVVM. Data comes from a GraphQL API through Apollo iOS with generated Swift types, is cached in SQLite for offline use, and the app is protected with Face ID and a PIN fallback.
 
+<p>
+  <img src="docs/screenshots/star-wars-characters.jpg" width="200" alt="Characters list with film counts">
+  <img src="docs/screenshots/star-wars-character.jpg" width="200" alt="Luke Skywalker detail: physical attributes, background and film appearances">
+  <img src="docs/screenshots/star-wars-starship.jpg" width="200" alt="CR90 corvette detail: specifications, capacity and performance">
+  <img src="docs/screenshots/star-wars-planets.jpg" width="200" alt="Planets list with film counts">
+</p>
+
 ## Features
 
 ### Characters
@@ -43,20 +50,20 @@ The app uses Apollo iOS client for type-safe GraphQL queries with the following 
 - Automatic mapping between GraphQL and app model types
 
 ### GraphQL Schema
-The app connects to the public Star Wars GraphQL API (https://swapi-bechir.vercel.app/graphql) which provides detailed information about the Star Wars universe.
+The app connects to a Star Wars GraphQL API at https://swapi-bechir.vercel.app/graphql, served by [swapi-graphql](https://github.com/bechirboujelbene/swapi-graphql).
 
 ## Getting Started
 
 ### Prerequisites
-- Xcode 14.0+
-- iOS 16.0+
-- Swift 5.7+
+- Xcode 16+
+- iOS 18 (device or simulator)
 
 ### Installation
 1. Clone this repository
 2. Open `StarWars.xcodeproj` in Xcode
 3. Install dependencies using Swift Package Manager (automatically handled by Xcode)
 4. Build and run the project on your iOS device or simulator
+5. In the simulator Face ID is not enrolled, so the app asks for the PIN: `1234`
 
 ### Apollo Code Generation
 If you need to regenerate the Apollo GraphQL code:
