@@ -43,7 +43,7 @@ The app uses Apollo iOS client for type-safe GraphQL queries with the following 
 - Automatic mapping between GraphQL and app model types
 
 ### GraphQL Schema
-The app connects to the public Star Wars GraphQL API (https://swapi-graphql.eskerda.vercel.app/) which provides detailed information about the Star Wars universe.
+The app connects to the public Star Wars GraphQL API (https://swapi-graphql.netlify.app/graphql) which provides detailed information about the Star Wars universe.
 
 ## Getting Started
 

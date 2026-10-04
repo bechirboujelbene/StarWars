@@ -97,7 +97,7 @@ class APIService {
     static let shared = APIService()
     
     // GraphQL endpoint URL
-    private let endpointURL = URL(string: "https://swapi-graphql.eskerda.vercel.app/")!
+    private let endpointURL = URL(string: "https://swapi-graphql.netlify.app/graphql")!
     
     // Define the Apollo Client instance
     private(set) lazy var client: ApolloClient = {        
